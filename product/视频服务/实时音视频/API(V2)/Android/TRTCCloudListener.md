@@ -11,7 +11,7 @@ TRTCCloudListener 是 TRTCCloud 的主要回调接口。
 
 ### onError
 
-错误回调：SDK 不可恢复的错误，一定要监听，并分情况给用户适当的界面提示。
+错误回调: SDK不可恢复的错误，一定要监听，并分情况给用户适当的界面提示。
 
 ```
 void onError(int errCode, String errMsg, Bundle extraInfo)
@@ -69,7 +69,7 @@ __参数__
 
 ### onExitRoom
 
-离开房间，离开房间成功的回调。
+离开房间 离开房间成功的回调。
 
 ```
 void onExitRoom(int reason)
@@ -89,7 +89,7 @@ __参数__
 
 ### onUserEnter
 
-userid 对应的成员的进房通知，您可以在这个回调中调用 startRemoteView 显示该 userid 的视频画面。
+成员进入房间事件。
 
 ```
 void onUserEnter(String userId)
@@ -106,7 +106,7 @@ __参数__
 
 ### onUserExit
 
-userid 对应的成员的退房通知，您可以在这个回调中调用 stopRemoteView 关闭该 userid 的视频画面。
+成员离开房间事件。
 
 ```
 void onUserExit(String userId, int reason)
@@ -124,7 +124,7 @@ __参数__
 
 ### onUserVideoAvailable
 
-userid 对应的远端主路（即摄像头）画面的状态通知。
+成员屏蔽自己的画面。
 
 ```
 void onUserVideoAvailable(String userId, boolean available)
@@ -140,27 +140,9 @@ __参数__
 <br/>
 
 
-### onUserSubStreamAvailable
-
-userid 对应的远端辅路（屏幕分享等）画面的状态通知。
-
-```
-void onUserSubStreamAvailable(String userId, boolean available)
-```
-
-__参数__
-
-| 参数 | 类型 | 含义 |
-|-----|------|------|
-| userId | String | 用户标识 |
-| available | boolean | true：屏幕分享可播放，false：屏幕分享被关闭 |
-
-<br/>
-
-
 ### onUserAudioAvailable
 
-userid 对应的远端声音的状态通知。
+成员屏蔽自己的声音。
 
 ```
 void onUserAudioAvailable(String userId, boolean available)
@@ -178,7 +160,7 @@ __参数__
 
 ### onUserVoiceVolume
 
-userid 对应的成员语音音量 通过调用 TRTCCloud enableAudioVolumeEvaluation 来开关这个回调。
+成员语音音量回调 通过调用 TRTCCloud enableAudioVolumeEvaluation 来开关这个回调。
 
 ```
 void onUserVoiceVolume(ArrayList< TRTCCloudDef.TRTCVolumeInfo > userVolumes, int totalVolume)
@@ -199,8 +181,7 @@ __参数__
 
 ### onNetworkQuality
 
-网络质量：该回调每2秒触发一次，统计当前网络的上行和下行质量。
->!userid 为""代表自己当前的视频质量。
+网络质量: 该回调每 2 秒触发一次，统计当前网络的上行和下行质量 注：userid 为"" 代表自己当前的视频质量。
 
 ```
 void onNetworkQuality(TRTCCloudDef.TRTCQuality localQuality, ArrayList< TRTCCloudDef.TRTCQuality > remoteQuality)
@@ -218,7 +199,7 @@ __参数__
 
 ### onStatistics
 
-技术指标统计回调：如果您是熟悉音视频领域相关术语，可以通过这个回调获取 SDK 的所有技术指标， 如果您是首次开发音视频相关项目，可以只关注 onNetworkQuality 回调。
+技术指标统计回调: 如果您是熟悉音视频领域相关术语，可以通过这个回调获取SDK的所有技术指标， 如果您是首次开发音视频相关项目，可以只关注 onNetworkQuality 回调。
 
 ```
 void onStatistics(TRTCStatistics statics)
@@ -244,7 +225,7 @@ __说明__
 
 ### onFirstVideoFrame
 
-首帧视频画面到达，界面此时可以结束 loading，并开始显示视频画面。
+首帧视频画面到达，界面此时可以结束loading，并开始显示视频画面。
 
 ```
 void onFirstVideoFrame(String userId, int width, int height)
@@ -316,7 +297,7 @@ void onConnectionRecovery()
 
 ### onSpeedTest
 
-服务器测速的回调，SDK 对多个服务器 IP 做测速，每个 IP 的测速结果通过这个回调通知。
+服务器测速的回调，SDK 对多个服务器IP做测速，每个IP的测速结果通过这个回调通知。
 
 ```
 void onSpeedTest(TRTCCloudDef.TRTCSpeedTestResult currentResult, int finishedCount, int totalCount)
@@ -386,7 +367,7 @@ __参数__
 | 参数 | 类型 | 含义 |
 |-----|------|------|
 | userId | String | 用户标识 |
-| cmdID | int | 命令 ID |
+| cmdID | int | 命令ID |
 | seq | int | 消息序号 |
 | message | byte [] | 消息数据 |
 
@@ -401,7 +382,7 @@ __说明__
 
 ### onMissCustomCmdMsg
 
-TRTC 所使用的传输通道为 UDP 通道，所以即使设置了 reliable，也做不到100不丢失，只是丢消息概率极低，能满足常规可靠性要求。 在过去的一段时间内（通常为5s），自定义消息在传输途中丢失的消息数量的统计，SDK 都会通过此回调通知出来。
+TRTC所使用的传输通道为UDP通道，所以即使设置了 reliable，也做不到100不丢失，只是丢消息概率极低，能满足常规可靠性要求。 在过去的一段时间内（通常为5s），自定义消息在传输途中丢失的消息数量的统计，SDK 都会通过此回调通知出来。
 
 ```
 void onMissCustomCmdMsg(String userId, int cmdID, int errCode, int missed)
@@ -412,43 +393,90 @@ __参数__
 | 参数 | 类型 | 含义 |
 |-----|------|------|
 | userId | String | 用户标识 |
-| cmdID | int | 数据流 ID |
+| cmdID | int | 数据流ID |
 | errCode | int | 错误码，当前版本为-1 |
 | missed | int | 丢失的消息数量 |
 
 __说明__
 
 
-只有在发送端设置了可靠传输（reliable），接收方才能收到消息的丢失回调。
+只有在发送端设置了可靠传输(reliable)，接收方才能收到消息的丢失回调。
 
 
 <br/>
 
 
 
-## CDN 旁路转推
+## 旁路转推和混流回调
 
 ### onStartPublishCDNStream
 
-旁路推流到 CDN 的回调，对应于 TRTCCloud 的 startPublishCDNStream() 接口。
+接口startPublishCDNStream的状态回调。
 
 ```
 void onStartPublishCDNStream(int err, String errMsg)
 ```
 
-__说明__
+__参数__
 
-
-Start 回调如果成功，只能说明转推请求已经成功告知给腾讯云，如果目标服务器有异常，还是有可能会转推失败。
-
+| 参数 | 类型 | 含义 |
+|-----|------|------|
+| err | int | 错误码，参考 TXLiteAVCode.h |
+| errMsg | String | 错误详细信息 |
 
 <br/>
 
 
 ### onStopPublishCDNStream
+
+接口stopPublishCDNStream的状态回调。
+
 ```
 void onStopPublishCDNStream(int err, String errMsg)
 ```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|------|------|
+| err | int | 错误码，参考 TXLiteAVCode.h |
+| errMsg | String | 错误详细信息 |
+
+<br/>
+
+
+### onStartCloudMixTranscoding
+
+接口startCloudMixTranscoding的状态回调。
+
+```
+void onStartCloudMixTranscoding(int err, String errMsg)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|------|------|
+| err | int | 错误码，参考 TXLiteAVCode.h |
+| errMsg | String | 错误详细信息 |
+
+<br/>
+
+
+### onStopCloudMixTranscoding
+
+接口stopCloudMixTranscoding的状态回调。
+
+```
+void onStopCloudMixTranscoding(int err, String errMsg)
+```
+
+__参数__
+
+| 参数 | 类型 | 含义 |
+|-----|------|------|
+| err | int | 错误码，参考 TXLiteAVCode.h |
+| errMsg | String | 错误详细信息 |
 
 <br/>
 
@@ -481,38 +509,6 @@ __参数__
 
 
 
-## ITRTCVideoPostProcessListener
-### 本地视频的二次加工回调
-
-#### onVideoPostProcess
-
-经过 SDK 前处理后的视频数据，前处理包括对摄像头采集到的视频进行美颜、裁剪、缩放和旋转。
-
-```
-int onVideoPostProcess(TRTCCloudDef.TRTCVideoFrame frame)
-```
-
-__参数__
-
-| 参数 | 类型 | 含义 |
-|-----|------|------|
-| frame | TRTCCloudDef.TRTCVideoFrame | 返回给用户处理的 自定义数据（目前只支持纹理 textureId） |
-
-<br/>
-
-
-#### onVideoPostProcessGLDestroy
-
-自定义预处理，Opengl 环境销毁通知回调; 用户可以在此回调里，进行 opengl 资源回收；保证跟 sdk 的 opengl 在同一个线程；否则可能会显存泄漏或崩溃。
-
-```
-void onVideoPostProcessGLDestroy()
-```
-
-<br/>
-
-
-
 ## TRTCLogListener
 
 __功能__
@@ -524,7 +520,7 @@ __功能__
 __介绍__
 
 
-建议在一个比较早初始化的类中设置回调对象，如 Application。
+建议在一个比较早初始化的类中设置回调对象，如Application。
 
 
 <br/>
@@ -539,8 +535,8 @@ __参数__
 | 参数 | 类型 | 含义 |
 |-----|------|------|
 | log | String | 日志内容 |
-| level | int | 日志等级，参见 TRTC_LOG_LEVEL |
-| module | String | 值暂无具体意义，目前为固定值 TXLiteAVSDK |
+| level | int | 日志等级 参见TRTC_LOG_LEVEL |
+| module | String | 值暂无具体意义，目前为固定值TXLiteAVSDK |
 
 <br/>
 

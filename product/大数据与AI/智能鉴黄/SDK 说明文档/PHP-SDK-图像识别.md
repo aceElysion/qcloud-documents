@@ -1,4 +1,3 @@
-
 ## 开发准备
 ### SDK 获取
 智能图像的 PHP SDK 下载地址：[PHP-SDK-V2.0](https://github.com/tencentyun/image-php-sdk-v2.0)。

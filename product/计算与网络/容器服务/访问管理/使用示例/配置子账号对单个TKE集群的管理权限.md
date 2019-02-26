@@ -51,8 +51,7 @@
                 "monitor:*",
                 "cam:ListUsersForGroup",
                 "cam:ListGroups",
-                "cam:GetGroup",
-                "cam:GetRole"
+                "cam:GetGroup"
             ],
             "resource": "*",
             "effect": "allow"
@@ -115,8 +114,7 @@
                 "monitor:*",
                 "cam:ListUsersForGroup",
                 "cam:ListGroups",
-                "cam:GetGroup",
-                "cam:GetRole"
+                "cam:GetGroup"
             ],
             "resource": "*"
         }
@@ -128,3 +126,7 @@
 ![编辑策略内容2](https://main.qcloudimg.com/raw/0689ed1ad85aa4d8fc8960e258b9bd1b.png)
 >! 请替换成您想赋予权限的指定地域下的集群 ID。
 7. 单击【创建策略】，即可完成对单个集群只读权限的配置。
+
+
+
+

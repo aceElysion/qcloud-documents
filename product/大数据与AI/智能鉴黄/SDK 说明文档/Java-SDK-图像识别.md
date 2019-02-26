@@ -1,5 +1,3 @@
-
-
 ## SDK 获取
 智能图像的 Java SDK 下载地址：[Java-SDK-V2.0](https://github.com/tencentyun/image-java-sdk-v2.0)。
 

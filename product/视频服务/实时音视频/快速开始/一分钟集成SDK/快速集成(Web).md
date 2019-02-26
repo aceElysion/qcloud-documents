@@ -11,9 +11,11 @@
 | Windows(PC)  | [QQ浏览器](https://browser.qq.com/) | 10.2 | &nbsp;     |
 
 
-> 基于 TBS 内核的 webview，需满足版本 >= 43600，我们的[ 能力检测 ](https://cloud.tencent.com/document/product/647/17251#webrtcapi.fn.detectrtc) 中有获取 TBS 版本的方法。
+> 基于 TBS 内核的 webview，需满足版本 >= 43600，我们的[ 能力检测 ](/document/product/647/17251#webrtcapi.fn.detectrtc) 中有获取 TBS 版本的方法。
 
 ## 集成 TRTC Web SDK
+### NPM 方案
+TO-DO
 
 ### CDN 方案
 - 该方案直接从腾讯 CDN 上加载 TRTC Web SDK，速度快，稳定性好。
@@ -26,7 +28,7 @@
 ## 更新日志
 
 #### 3.0（ 2018-09-11 ）
-- 调整初始化接口 [WebRTCAPI](https://cloud.tencent.com/document/product/647/17251#webrtcapi)。
+- 调整初始化接口 [WebRTCAPI](/document/product/647/17251#webrtcapi) 
 - 弃用字段 accountType 
 - 弃用字段 closeLocalMedia 默认不再推流
 - 弃用字段 video 不再支持配置是否进行音视频推流 
@@ -35,7 +37,7 @@
  
 #### 2.6.1（ 2018-08-16 ）
 - 增加接口 getSpeakerDevices（枚举音频输出设备）
-- 增加接口 chooseSpeakerDevice（选择音频输出设备）
+- 增加接口chooseSpeakerDevice（选择音频输出设备）
 
 #### 2.6 （ 2018-08-10）
 - 新增SoundMeter接口
@@ -45,10 +47,9 @@
 ## 常见问题
 
 ### 1. 防火墙限制
-由于 SDK 使用 UDP 协议进行音视频传输，所以对 UDP 有拦截的办公网络下无法使用，如遇到类似问题，请将如下域名和端口加入防火墙的安全白名单中。
-域名：qcloud.rtc.qq.com
+由于 WebRTC 使用 UDP 协议进行音视频传输，所以对 UDP 有拦截的办公网络下无法使用，如遇到类似问题，请联系贵司的网络管理员，将如下端口加入防火墙的安全白名单中。
 
-| 协议 | 端口号 |
-|:--------|:--------|
+| 协议      | 端口号                                   |
+| ------- | ---------------------------------------- |
 | TCP | 8687 |
-| UDP | 8000、8800、443 |
+| UDP  | 8000 、 8800 、 443 |
